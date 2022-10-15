@@ -2,37 +2,31 @@ package com.msousa.estate.modules.property
 
 import com.msousa.estate.enuns.SituationSaleType
 import com.msousa.estate.modules.proposal.Proposal
+import org.springframework.data.annotation.Id
+import org.springframework.data.relational.core.mapping.Column
 import java.util.*
-import javax.persistence.*
 
-@Entity
-@Table(name = "property")
 data class Property(
 
     @Id
-    @GeneratedValue
-    @Column(name = "property_id")
+    @Column("property_id")
     val propertyId: UUID,
 
-    @Column(name = "address")
+    @Column("address")
     val address: String,
 
-    @Column(name = "description")
+    @Column("description")
     val description: String,
 
-    @Column(name = "number_of_offers")
+    @Column("number_of_offers")
     val numberOffers: Int,
 
-    @Enumerated(value = EnumType.STRING)
-    @Column(name = "situation_sale")
+    @Column("situation_sale")
     val situationSale: SituationSaleType,
 
-    @Column(name = "area")
+    @Column("area")
     val area: Double,
 
-    @Column(name = "price")
+    @Column("price")
     val price: Double,
-
-    @OneToMany(mappedBy = "property")
-    val proposals: Set<Proposal>
 )
