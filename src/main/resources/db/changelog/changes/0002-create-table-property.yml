@@ -32,7 +32,7 @@ databaseChangeLog:
               type: varchar(20)
               constraints:
                   nullable: false
-              defaultValue: "NAO VENDIDO"
+              defaultValue: "NOT_SOLD"
           - column:
               name: area
               type: decimal(10,2)
