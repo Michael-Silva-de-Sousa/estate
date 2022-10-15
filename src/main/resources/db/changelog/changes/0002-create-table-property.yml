@@ -1,0 +1,45 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0002
+      author: Michael
+      changes:
+      - createTable:
+          tableName: property
+          columns:
+          - column:
+              name: property_id
+              type: uuid
+              autoIncrement: false
+              constraints:
+                primaryKey: true
+                nullable: false
+          - column:
+              name: address
+              type: varchar(100)
+              constraints:
+                nullable: false
+            remarks: "property location"
+          - column:
+              name: description
+              type: varchar(255)
+              constraints:
+                nullable: false
+          - column:
+              name: number_of_offers
+              type: int
+          - column:
+              name: situation_sale
+              type: varchar(20)
+              constraints:
+                  nullable: false
+              defaultValue: "NAO VENDIDO"
+          - column:
+              name: area
+              type: decimal(10,2)
+              constraints:
+                nullable: false
+          - column:
+              name: price
+              type: decimal(16,2)
+              constraints:
+                nullable: false

@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0003
+      author: Michael
+      changes:
+        - addColumn:
+            tableName: property
+            columns:
+              - column:
+                  name: seller_id
+                  type: uuid
+              - constraints:
+                  nullable: false
+        - addForeignKeyConstraint:
+            baseColumnNames: seller_id
+            baseTableName: property
+            constraintName: fk_property_seller
+            referencedColumnNames: seller_id
+            referencedTableName: seller

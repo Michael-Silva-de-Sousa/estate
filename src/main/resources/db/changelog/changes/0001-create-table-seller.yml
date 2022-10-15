@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0001
+      author: Michael
+      changes:
+      - createTable:
+          tableName: seller
+          columns:
+          - column:
+              name: seller_id
+              type: uuid
+              autoIncrement: false
+              constraints:
+                primaryKey: true
+                nullable: false
+          - column:
+              name: name
+              type: varchar(100)
+              constraints:
+                  nullable: false
+          - column:
+                name: email
+                type: varchar(100)
+                constraints:
+                    nullable: false
+          - column:
+                name: telefone_1
+                type: varchar(11)
+                constraints:
+                    nullable: false
+          - column:
+                name: telefone_2
+                type: varchar(11)
+                constraints:
+                    nullable: true
