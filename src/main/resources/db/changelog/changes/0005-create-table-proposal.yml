@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0005
+      author: Michael
+      changes:
+        - createTable:
+            tableName: proposal
+            columns:
+              - column:
+                  name: property_id
+                  type: uuid
+                  autoIncrement: false
+                  constraints:
+                    nullable: false
+              - column:
+                  name: buyer_id
+                  type: uuid
+                  autoIncrement: false
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price_offers
+                  type: decimal(16,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseColumnNames: property_id
+            baseTableName: proposal
+            constraintName: fk_proposal_property
+            referencedColumnNames: property_id
+            referencedTableName: property
+        - addForeignKeyConstraint:
+            baseColumnNames: buyer_id
+            baseTableName: proposal
+            constraintName: fk_proposal_buyer
+            referencedColumnNames: buyer_id
+            referencedTableName: buyer

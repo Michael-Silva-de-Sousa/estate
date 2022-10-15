@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0006
+      author: Michael
+      changes:
+        - renameColumn:
+            newColumnName: telephone_1
+            oldColumnName: telefone_1
+            tableName: seller
+        - renameColumn:
+            newColumnName: telephone_2
+            oldColumnName: telefone_2
+            tableName: seller
