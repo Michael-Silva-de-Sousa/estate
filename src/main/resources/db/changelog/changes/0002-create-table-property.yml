@@ -9,7 +9,8 @@ databaseChangeLog:
           - column:
               name: property_id
               type: uuid
-              autoIncrement: false
+              autoIncrement: true
+              defaultValue: gen_random_uuid()
               constraints:
                 primaryKey: true
                 nullable: false

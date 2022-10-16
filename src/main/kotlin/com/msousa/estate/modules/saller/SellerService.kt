@@ -8,9 +8,16 @@ import java.util.*
 @Service
 class SellerService(private val sellerRepository: SellerRepository) {
 
-    fun findAll(): Flux<Seller> = sellerRepository.findAll()
+    fun findAll(): Flux<SellerDTO> {
+        return sellerRepository.findAll().map { SellerDTO(it) }
+    }
 
-    fun findById(id: UUID): Mono<Seller> = sellerRepository.findById(id)
+    fun findById(id: UUID): Mono<SellerDTO> {
+        return sellerRepository.findById(id).map { SellerDTO(it) }
+    }
 
-    fun save(seller: Seller): Mono<Seller> = sellerRepository.save(seller)
+    fun save(seller: Seller): Mono<SellerDTO> {
+        return sellerRepository.save(seller)
+            .map { SellerDTO(it) }
+    }
 }

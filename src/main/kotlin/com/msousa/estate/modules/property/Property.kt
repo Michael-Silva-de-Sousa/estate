@@ -10,7 +10,7 @@ data class Property(
 
     @Id
     @Column("property_id")
-    val propertyId: UUID,
+    val propertyId: UUID? = null,
 
     @Column("address")
     val address: String,

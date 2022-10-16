@@ -9,7 +9,7 @@ data class Proposal(
 
     @Id
     @Column("proposal_id")
-    val proposalId: UUID,
+    val proposalId: UUID? = null,
 
     @Column("price_offers")
     val priceOffers: Double,

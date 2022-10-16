@@ -1,5 +1,7 @@
 package com.msousa.estate.modules.saller
 
+
+import org.springframework.http.MediaType
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
@@ -10,13 +12,16 @@ import java.util.*
 @RequestMapping("/sellers")
 class SellerController(val sellerService: SellerService) {
 
-    @GetMapping
-    fun findAll(): Flux<Seller> = sellerService.findAll()
+    @GetMapping(produces = [MediaType.APPLICATION_JSON_VALUE])
+    fun findAll(): Flux<SellerDTO> = sellerService.findAll()
 
-    @GetMapping("/{id}")
-    fun findById(@PathVariable id: UUID): Mono<Seller> = sellerService.findById(id)
+    @GetMapping("/{id}", produces = [MediaType.APPLICATION_JSON_VALUE])
+    fun findById(@PathVariable id: UUID): Mono<SellerDTO> = sellerService.findById(id)
 
     @Transactional
-    @PostMapping
-    fun create(@RequestBody seller: Seller): Mono<Seller> = sellerService.save(seller)
+    @PostMapping(
+        produces = [MediaType.APPLICATION_JSON_VALUE],
+        consumes = [MediaType.APPLICATION_JSON_VALUE]
+    )
+    fun save(@RequestBody seller: Seller): Mono<SellerDTO> = sellerService.save(seller)
 }

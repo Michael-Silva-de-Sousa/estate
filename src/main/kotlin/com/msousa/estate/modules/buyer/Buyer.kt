@@ -8,7 +8,7 @@ data class Buyer(
 
     @Id
     @Column("buyer_id")
-    val buyerId: UUID,
+    val buyerId: UUID? = null,
 
     @Column("name")
     val name: String,
