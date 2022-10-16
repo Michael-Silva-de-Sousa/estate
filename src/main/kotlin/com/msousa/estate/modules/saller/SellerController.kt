@@ -8,15 +8,15 @@ import java.util.*
 
 @RestController
 @RequestMapping("/sellers")
-class SallerController(val sellerRepository: SellerRepository) {
+class SellerController(val sellerService: SellerService) {
 
     @GetMapping
-    fun findAll(): Flux<Seller> = sellerRepository.findAll()
+    fun findAll(): Flux<Seller> = sellerService.findAll()
 
     @GetMapping("/{id}")
-    fun findById(@PathVariable id: UUID): Mono<Seller> = sellerRepository.findById(id)
+    fun findById(@PathVariable id: UUID): Mono<Seller> = sellerService.findById(id)
 
     @Transactional
     @PostMapping
-    fun create(@RequestBody saller: Seller): Mono<Seller> = sellerRepository.save(saller)
+    fun create(@RequestBody seller: Seller): Mono<Seller> = sellerService.save(seller)
 }
