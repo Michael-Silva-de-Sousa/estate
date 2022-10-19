@@ -9,7 +9,7 @@ databaseChangeLog:
           - column:
               name: seller_id
               type: uuid
-              autoIncrement: false
+              autoIncrement: true
               defaultValue: gen_random_uuid()
               constraints:
                 primaryKey: true

@@ -1,7 +1,7 @@
 package com.msousa.estate.modules.property
 
+import com.msousa.estate.dto.PropertyDTO
 import com.msousa.estate.enuns.SituationSaleType
-import com.msousa.estate.modules.proposal.Proposal
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Column
 import java.util.*
@@ -29,4 +29,18 @@ data class Property(
 
     @Column("price")
     val price: Double,
-)
+
+    @Column("seller_id")
+    val sellerId: UUID,
+) {
+    constructor(propertyDTO: PropertyDTO) : this(
+        propertyDTO.propertyId,
+        propertyDTO.address,
+        propertyDTO.description,
+        propertyDTO.numberOffers,
+        propertyDTO.situationSale,
+        propertyDTO.area,
+        propertyDTO.price,
+        propertyDTO.sellerId
+    )
+}
